@@ -6,6 +6,7 @@ import AuthHeader from "../../../components/AuthHeader/AuthHeader";
 import Input from "../../../components/Input/Input";
 import Checkbox from "../../../components/Checkbox/Checkbox";
 import Separator from "../../../components/Separator/Separator";
+import GoogleLogin from "../../../components/GoogleLogin/GoogleLogin";
 
 const Signup = () => {
     //
@@ -36,6 +37,9 @@ const Signup = () => {
 
             {/* Separator */}
             <Separator text="or Sing In with" />
+
+            {/* Google */}
+            <GoogleLogin />
         </View>
     );
 };
