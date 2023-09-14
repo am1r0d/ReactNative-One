@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Text } from "react-native";
+import { SafeAreaView, ScrollView, Text } from "react-native";
 import Button from "../../../components/Button/Button";
 import { styles } from "./signinStyles";
 import AuthHeader from "../../../components/AuthHeader/AuthHeader";
@@ -19,31 +19,33 @@ const Signin = ({ navigation }) => {
     };
 
     return (
-        <ScrollView style={styles.container}>
-            {/* Header */}
-            <AuthHeader onBackPress={onBack} title="Sign In" />
+        <SafeAreaView>
+            <ScrollView style={styles.container}>
+                {/* Header */}
+                <AuthHeader onBackPress={onBack} title="Sign In" />
 
-            {/* Inputs */}
-            <Input label="E-mail" placeholder="example@email.com" />
-            <Input isPassword label="Password" placeholder="**********" />
+                {/* Inputs */}
+                <Input label="E-mail" placeholder="example@email.com" />
+                <Input isPassword label="Password" placeholder="**********" />
 
-            {/* Button */}
-            <Button style={styles.button} title="Sign In" />
+                {/* Button */}
+                <Button style={styles.button} title="Sign In" />
 
-            {/* Separator */}
-            <Separator text="Or sign in with" />
+                {/* Separator */}
+                <Separator text="Or sign in with" />
 
-            {/* Google */}
-            <GoogleLogin />
+                {/* Google */}
+                <GoogleLogin />
 
-            {/* Footer */}
-            <Text style={styles.footerText}>
-                Don't have an account?
-                <Text onPress={onSignUp} style={styles.footerLink}>
-                    Sign In
+                {/* Footer */}
+                <Text style={styles.footerText}>
+                    Don't have an account?
+                    <Text onPress={onSignUp} style={styles.footerLink}>
+                        Sign In
+                    </Text>
                 </Text>
-            </Text>
-        </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, SafeAreaView } from "react-native";
 import Button from "../../../components/Button/Button";
 import { styles } from "./signupStyles";
 import AuthHeader from "../../../components/AuthHeader/AuthHeader";
@@ -24,42 +24,44 @@ const Signup = ({ navigation }) => {
     };
 
     return (
-        <ScrollView style={styles.container}>
-            {/* Header */}
-            <AuthHeader onBackPress={onBack} title="Sign Up" />
+        <SafeAreaView>
+            <ScrollView style={styles.container}>
+                {/* Header */}
+                <AuthHeader onBackPress={onBack} title="Sign Up" />
 
-            {/* Inputs */}
-            <Input label="Name" placeholder="Amir F" />
-            <Input label="E-mail" placeholder="example@email.com" />
-            <Input isPassword label="Password" placeholder="**********" />
+                {/* Inputs */}
+                <Input label="Name" placeholder="Amir F" />
+                <Input label="E-mail" placeholder="example@email.com" />
+                <Input isPassword label="Password" placeholder="**********" />
 
-            {/*  Checkbox*/}
-            <View style={styles.agreeRow}>
-                <Checkbox checked={checked} onCheck={setChecked} />
-                <Text style={styles.agreeText}>
-                    I agree with
-                    <Text style={styles.agreeTextBold}> Terms </Text>&{" "}
-                    <Text style={styles.agreeTextBold}>Privacy</Text>
+                {/*  Checkbox*/}
+                <View style={styles.agreeRow}>
+                    <Checkbox checked={checked} onCheck={setChecked} />
+                    <Text style={styles.agreeText}>
+                        I agree with
+                        <Text style={styles.agreeTextBold}> Terms </Text>&{" "}
+                        <Text style={styles.agreeTextBold}>Privacy</Text>
+                    </Text>
+                </View>
+
+                {/* Button */}
+                <Button style={styles.button} title="Sign Up" />
+
+                {/* Separator */}
+                <Separator text="Or sign up with" />
+
+                {/* Google */}
+                <GoogleLogin />
+
+                {/* Footer */}
+                <Text style={styles.footerText}>
+                    Already have an account?
+                    <Text onPress={onSignIn} style={styles.footerLink}>
+                        Sign In
+                    </Text>
                 </Text>
-            </View>
-
-            {/* Button */}
-            <Button style={styles.button} title="Sign Up" />
-
-            {/* Separator */}
-            <Separator text="Or sign up with" />
-
-            {/* Google */}
-            <GoogleLogin />
-
-            {/* Footer */}
-            <Text style={styles.footerText}>
-                Already have an account?
-                <Text onPress={onSignIn} style={styles.footerLink}>
-                    Sign In
-                </Text>
-            </Text>
-        </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     );
 };
 

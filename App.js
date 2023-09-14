@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Signin from "./src/screens/auth/Signin/Signin";
 import Splash from "./src/screens/auth/Splash/Splash";
@@ -24,25 +24,27 @@ export default function App() {
 
     const Stack = createNativeStackNavigator();
     return (
-        <NavigationContainer theme={theme}>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="Splash"
-                    component={Splash}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="Signin"
-                    component={Signin}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="Signup"
-                    component={Signup}
-                    options={{ headerShown: false }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <SafeAreaProvider>
+            <NavigationContainer theme={theme}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="Splash"
+                        component={Splash}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Signin"
+                        component={Signin}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Signup"
+                        component={Signup}
+                        options={{ headerShown: false }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </SafeAreaProvider>
     );
 }
 
