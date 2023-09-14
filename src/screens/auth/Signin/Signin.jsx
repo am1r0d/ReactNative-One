@@ -7,16 +7,21 @@ import Input from "../../../components/Input/Input";
 import Separator from "../../../components/Separator/Separator";
 import GoogleLogin from "../../../components/GoogleLogin/GoogleLogin";
 
-const Signin = () => {
+const Signin = ({ navigation }) => {
     //
     const onSignUp = () => {
-        console.log("Footer Text");
+        navigation.navigate("Signup");
+    };
+
+    // Back
+    const onBack = () => {
+        navigation.goBack();
     };
 
     return (
         <ScrollView style={styles.container}>
             {/* Header */}
-            <AuthHeader title="Sign In" />
+            <AuthHeader onBackPress={onBack} title="Sign In" />
 
             {/* Inputs */}
             <Input label="E-mail" placeholder="example@email.com" />
