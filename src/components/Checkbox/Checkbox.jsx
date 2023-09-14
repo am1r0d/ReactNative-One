@@ -3,6 +3,7 @@ import { TouchableOpacity, Image, View } from "react-native";
 import { styles } from "./CheckboxStyles";
 
 const Checkbox = ({ checked, onCheck }) => {
+    console.log("Inside Checkbox[", checked, "]");
     return (
         <TouchableOpacity
             onPress={() => onCheck(!checked)}
@@ -21,4 +22,4 @@ const Checkbox = ({ checked, onCheck }) => {
     );
 };
 
-export default Checkbox;
+export default React.memo(Checkbox);
