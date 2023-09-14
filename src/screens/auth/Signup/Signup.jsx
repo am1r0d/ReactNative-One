@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import Button from "../../../components/Button/Button";
 import { styles } from "./signupStyles";
 import AuthHeader from "../../../components/AuthHeader/AuthHeader";
@@ -18,7 +18,7 @@ const Signup = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             {/* Header */}
             <AuthHeader title="Sign Up" />
 
@@ -41,7 +41,7 @@ const Signup = () => {
             <Button style={styles.button} title="Sign Up" />
 
             {/* Separator */}
-            <Separator text="or Sing In with" />
+            <Separator text="Or sign up with" />
 
             {/* Google */}
             <GoogleLogin />
@@ -53,7 +53,7 @@ const Signup = () => {
                     Sign In
                 </Text>
             </Text>
-        </View>
+        </ScrollView>
     );
 };
 
