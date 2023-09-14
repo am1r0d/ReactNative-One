@@ -1,7 +1,12 @@
+import * as React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import Signin from "./src/screens/auth/Signin/Signin";
 import { useEffect } from "react";
-// import Splash from "./src/screens/auth/Splash/Splash";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import Signin from "./src/screens/auth/Signin/Signin";
+import Splash from "./src/screens/auth/Splash/Splash";
+import Signup from "./src/screens/auth/Signup/Signup";
 
 const WEB_CLIENT_ID =
     "286125874361-mjcgbtn5v0p0iur07s3mvlfe9n4dqad4.apps.googleusercontent.com";
@@ -14,11 +19,20 @@ export default function App() {
     //
     useEffect(() => {}, []);
     //
+
+    // const Stack = createNativeStackNavigator();
+
+    const Stack = createNativeStackNavigator();
     return (
-        <SafeAreaView>
-            {/* <Splash /> */}
-            <Signin />
-        </SafeAreaView>
+        // <SafeAreaView>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Splash" component={Splash} />
+                <Stack.Screen name="Signin" component={Signin} />
+                <Stack.Screen name="Signup" component={Signup} />
+            </Stack.Navigator>
+        </NavigationContainer>
+        // </SafeAreaView>
     );
 }
 
