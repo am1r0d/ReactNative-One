@@ -12,6 +12,11 @@ const Signup = () => {
     //
     const [checked, setChecked] = useState(false);
 
+    //
+    const onSignIn = () => {
+        console.log("Footer Text");
+    };
+
     return (
         <View style={styles.container}>
             {/* Header */}
@@ -40,6 +45,14 @@ const Signup = () => {
 
             {/* Google */}
             <GoogleLogin />
+
+            {/* Footer */}
+            <Text style={styles.footerText}>
+                Already have an account?
+                <Text onPress={onSignIn} style={styles.footerLink}>
+                    Sign In
+                </Text>
+            </Text>
         </View>
     );
 };

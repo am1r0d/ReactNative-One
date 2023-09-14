@@ -20,4 +20,12 @@ export const styles = StyleSheet.create({
         // margin: 10,
         // padding: 10,
     },
+    footerText: {
+        color: colors.blue,
+        marginBottom: 56,
+        textAlign: "center",
+    },
+    footerLink: {
+        fontWeight: "bold",
+    },
 });
