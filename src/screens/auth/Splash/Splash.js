@@ -1,6 +1,7 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import { styles } from "./styles";
+import Button from "../../../components/Buttono/Button";
 
 const Splash = () => {
     return (
@@ -10,9 +11,18 @@ const Splash = () => {
                 style={styles.image}
                 source={require("../../../assets/bg.png")}
             />
-            <Text style={styles.title}>You'll Find</Text>
-            <Text style={[styles.title, styles.innerTitle]}>All you need</Text>
-            <Text style={styles.title}>here!</Text>
+            <View style={styles.titleContainer}>
+                <Text style={styles.title}>You'll Find</Text>
+                <Text style={[styles.title, styles.innerTitle]}>
+                    All you need
+                </Text>
+                <Text style={styles.title}>here!</Text>
+            </View>
+
+            <Button title="Sign Up" />
+            <Pressable hitSlop={20}>
+                <Text style={styles.footerText}>Sign In</Text>
+            </Pressable>
         </View>
     );
 };
