@@ -5,6 +5,7 @@ import { styles } from "./signupStyles";
 import AuthHeader from "../../../components/AuthHeader/AuthHeader";
 import Input from "../../../components/Input/Input";
 import Checkbox from "../../../components/Checkbox/Checkbox";
+import Separator from "../../../components/Separator/Separator";
 
 const Signup = () => {
     //
@@ -32,6 +33,9 @@ const Signup = () => {
 
             {/* Button */}
             <Button style={styles.button} title="Sign Up" />
+
+            {/* Separator */}
+            <Separator text="or Sing In with" />
         </View>
     );
 };
