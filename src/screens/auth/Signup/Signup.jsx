@@ -11,7 +11,7 @@ const Signup = () => {
             <AuthHeader title="Sign Up" />
             <Input label="Name" placeholder="Amir F" />
             <Input label="E-mail" placeholder="example@email.com" />
-            <Input label="Password" placeholder="**********" />
+            <Input isPassword label="Password" placeholder="**********" />
         </View>
     );
 };
