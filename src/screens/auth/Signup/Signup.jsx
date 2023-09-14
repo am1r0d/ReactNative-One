@@ -12,10 +12,15 @@ const Signup = () => {
 
     return (
         <View style={styles.container}>
+            {/* Header */}
             <AuthHeader title="Sign Up" />
+
+            {/* Inputs */}
             <Input label="Name" placeholder="Amir F" />
             <Input label="E-mail" placeholder="example@email.com" />
             <Input isPassword label="Password" placeholder="**********" />
+
+            {/*  Checkbox*/}
             <View style={styles.agreeRow}>
                 <Checkbox checked={checked} onCheck={setChecked} />
                 <Text style={styles.agreeText}>
@@ -24,6 +29,9 @@ const Signup = () => {
                     <Text style={styles.agreeTextBold}>Privacy</Text>
                 </Text>
             </View>
+
+            {/* Button */}
+            <Button style={styles.button} title="Sign Up" />
         </View>
     );
 };

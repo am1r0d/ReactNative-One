@@ -2,17 +2,12 @@ import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { styles } from "./ButtonStyles";
 
-const Button = ({ title, onPress }) => {
-    //
-    // const handlePress = () => {
-    //     console.log("button Clicked!!!");
-    // };
-
+const Button = ({ title, onPress, style }) => {
     return (
         <TouchableOpacity
             activeOpacity={0.6}
             onPress={onPress}
-            style={styles.container}
+            style={[styles.container, style]}
         >
             <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>

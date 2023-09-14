@@ -14,4 +14,10 @@ export const styles = StyleSheet.create({
         marginHorizontal: 13,
     },
     agreeTextBold: { fontWeight: "bold" },
+    button: {
+        // marginHorizontal: 10,
+        marginVertical: 20,
+        // margin: 10,
+        // padding: 10,
+    },
 });
