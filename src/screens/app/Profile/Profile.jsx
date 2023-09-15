@@ -1,10 +1,14 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text } from "react-native";
+import { ScrollView, Text } from "react-native";
+import styles from "./StylesProfile";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Profile = () => {
     return (
         <SafeAreaView>
-            <Text>New</Text>
+            <ScrollView>
+                <Text>New</Text>
+            </ScrollView>
         </SafeAreaView>
     );
 };
