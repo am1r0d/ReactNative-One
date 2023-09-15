@@ -24,8 +24,8 @@ const Input = ({ label, placeholder, isPassword }) => {
                             style={styles.eye}
                             source={
                                 isPasswordVisible
-                                    ? require("../../../assets/eye.png")
-                                    : require("../../../assets/eye_close.png")
+                                    ? require("../../assets/eye.png")
+                                    : require("../../assets/eye_close.png")
                             }
                         />
                     </Pressable>

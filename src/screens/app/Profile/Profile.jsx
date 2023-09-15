@@ -7,7 +7,7 @@ const Profile = () => {
     return (
         <SafeAreaView>
             <ScrollView>
-                <Text>New</Text>
+                <Text>Profile</Text>
             </ScrollView>
         </SafeAreaView>
     );

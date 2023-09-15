@@ -7,7 +7,7 @@ const GoogleLogin = () => {
         <TouchableOpacity activeOpacity={0.6} style={styles.container}>
             <Image
                 style={styles.image}
-                source={require("../../../assets/google.png")}
+                source={require("../../assets/google.png")}
             />
         </TouchableOpacity>
     );
