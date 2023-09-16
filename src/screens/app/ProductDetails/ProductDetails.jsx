@@ -4,9 +4,12 @@ import { styles } from "./ProductDetailsStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../../../components/Button/Button";
 
-const ProductDetails = ({ route }) => {
+const ProductDetails = ({ route, navigation }) => {
     const { product } = route?.params || {};
 
+    const onBackPress = () => {
+        navigation.goBack();
+    };
     //
     return (
         <SafeAreaView style={styles.safe}>
@@ -19,6 +22,13 @@ const ProductDetails = ({ route }) => {
                         {product?.description}
                     </Text>
                 </View>
+
+                <Pressable onPress={onBackPress} style={styles.backContainer}>
+                    <Image
+                        style={styles.backIcon}
+                        source={require("../../../assets/new-back.png")}
+                    />
+                </Pressable>
             </ScrollView>
 
             <View style={styles.footer}>
