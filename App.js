@@ -12,6 +12,7 @@ import { colors } from "./src/utils/colors";
 // Tabs imports
 import Home from "./src/screens/app/Home/Home";
 import Profile from "./src/screens/app/Profile/Profile";
+import ProductDetails from "./src/screens/app/ProductDetails/ProductDetails";
 import Favorites from "./src/screens/app/Favorites/Favorites";
 import { Image } from "react-native";
 
@@ -81,6 +82,11 @@ export default function App() {
                             <Stack.Screen
                                 name="Tabs"
                                 component={Tabs}
+                                options={{ headerShown: false }}
+                            />
+                            <Stack.Screen
+                                name="ProductDetails"
+                                component={ProductDetails}
                                 options={{ headerShown: false }}
                             />
                         </>
