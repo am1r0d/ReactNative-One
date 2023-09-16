@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
 import { styles } from "./StylesHome";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,10 +10,28 @@ import ProductHomeItem from "../../../components/ProductHomeItem/ProductHomeItem
 
 const Home = () => {
     //
+    const [selectedCategory, setSelectedCategory] = useState();
+    const [filteredProducts, setFilteredProducts] = useState(products);
+
+    // this useEffect for check selected category.
+    useEffect(() => {
+        if (selectedCategory) {
+            const updatedProducts = products.filter(
+                (products) => products?.category === selectedCategory
+            );
+            setFilteredProducts(updatedProducts);
+        } else {
+            setFilteredProducts(products);
+        }
+    }, [selectedCategory]);
+
+    //renderCategoryItem
     const renderCategoryItem = ({ item, index }) => {
         console.log("item :::", item);
         return (
             <CategoryBox
+                onPress={() => setSelectedCategory(item?.id)}
+                isSelected={item?.id === selectedCategory}
                 isFirst={index === 0}
                 title={item?.title}
                 image={item?.image}
@@ -45,7 +63,7 @@ const Home = () => {
             <FlatList
                 style={styles.productsList}
                 numColumns={2}
-                data={products}
+                data={filteredProducts}
                 renderItem={renderProductItem}
                 keyExtractor={(item) => String(item.id)}
                 ListFooterComponent={<View style={{ height: 200 }} />}
