@@ -9,7 +9,7 @@ import Splash from "./src/screens/auth/Splash/Splash";
 import Signup from "./src/screens/auth/Signup/Signup";
 import { colors } from "./src/utils/colors";
 
-// // Tabs imports
+// Tabs imports
 import Home from "./src/screens/app/Home/Home";
 import Profile from "./src/screens/app/Profile/Profile";
 import Favorites from "./src/screens/app/Favorites/Favorites";
