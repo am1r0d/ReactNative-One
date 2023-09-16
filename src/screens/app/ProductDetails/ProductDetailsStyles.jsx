@@ -4,8 +4,9 @@ import { colors } from "../../../utils/colors";
 const { height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
+    safe: { flex: 1 },
     container: {
-        // padding: 24,
+        // borderWidth: 1,
     },
     image: {
         width: "100%",
@@ -29,5 +30,24 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         marginVertical: 8,
     },
-    description: { color: colors.textGrey, fontWeight: "300" },
+    description: {
+        color: colors.textGrey,
+        fontWeight: "300",
+        marginVertical: 8,
+    },
+    footer: {
+        padding: 24,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    bookmarkContainer: {
+        backgroundColor: colors.lightGrey,
+        padding: 8,
+        borderRadius: 8,
+        marginRight: 16,
+    },
+    bookmarkIcon: {
+        width: 32,
+        height: 32,
+    },
 });
