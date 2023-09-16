@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     },
     bookmarkContainer: {
         backgroundColor: colors.lightGrey,
-        padding: 8,
+        padding: 17,
         borderRadius: 8,
         marginRight: 16,
     },
