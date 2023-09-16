@@ -11,19 +11,41 @@ import ProductHomeItem from "../../../components/ProductHomeItem/ProductHomeItem
 const Home = () => {
     //
     const [selectedCategory, setSelectedCategory] = useState();
+    const [keyword, setKeyword] = useState();
     const [filteredProducts, setFilteredProducts] = useState(products);
 
     // this useEffect for check selected category.
+    // and filter by typing keywords
     useEffect(() => {
-        if (selectedCategory) {
+        if (selectedCategory && !keyword) {
             const updatedProducts = products.filter(
-                (products) => products?.category === selectedCategory
+                (product) => product?.category === selectedCategory
             );
             setFilteredProducts(updatedProducts);
-        } else {
+        }
+        //
+        else if (selectedCategory && keyword) {
+            const updatedProducts = products.filter(
+                (product) =>
+                    product?.category === selectedCategory &&
+                    product?.title
+                        ?.toLowerCase()
+                        .includes(keyword?.toLowerCase())
+            );
+            setFilteredProducts(updatedProducts);
+        }
+        //
+        else if (!selectedCategory && keyword) {
+            const updatedProducts = products.filter((product) =>
+                product?.title?.toLowerCase().includes(keyword?.toLowerCase())
+            );
+            setFilteredProducts(updatedProducts);
+        }
+        //
+        else if (!keyword && !selectedCategory) {
             setFilteredProducts(products);
         }
-    }, [selectedCategory]);
+    }, [selectedCategory, keyword]);
 
     //renderCategoryItem
     const renderCategoryItem = ({ item, index }) => {
@@ -37,8 +59,6 @@ const Home = () => {
                 image={item?.image}
             />
         );
-
-        // return <Text>{item?.title}</Text>;
     };
 
     // ProductItem
@@ -49,8 +69,12 @@ const Home = () => {
     return (
         <SafeAreaView>
             {/* <ScrollView style={styles.container}> */}
-            <Header showSearch title="Find All You Need" />
-            {/* <Text>HOME</Text> */}
+            <Header
+                showSearch
+                onSearch={setKeyword}
+                keyword={keyword}
+                title="Find All You Need"
+            />
 
             <FlatList
                 showsHorizontalScrollIndicator={false}

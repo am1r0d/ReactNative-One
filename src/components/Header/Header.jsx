@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { Image, Pressable, View, Text } from "react-native";
 import { styles } from "./HeaderStyles";
 import Input from "../Input/Input";
+
 const Header = ({
     title,
     onBackPress,
     onLogout,
     showLogout,
     showSearch,
+    onSearch,
+    keyword,
     showBack,
 }) => {
     //useState
@@ -17,7 +20,7 @@ const Header = ({
         setShowSearchInput((s) => !s);
     };
     return (
-        <View>
+        <View style={styles.mainContainer}>
             <View style={styles.container}>
                 {/* showBack */}
                 {showBack ? (
@@ -50,8 +53,13 @@ const Header = ({
                     <View style={styles.space} />
                 )}
             </View>
+
             {showSearchInput ? (
-                <Input placeholder="Type your keywords..." />
+                <Input
+                    onChangeText={onSearch}
+                    value={keyword}
+                    placeholder="Type your keywords..."
+                />
             ) : null}
         </View>
     );
