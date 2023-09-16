@@ -32,6 +32,8 @@ export const products = [
         image: "https://cdn.shopify.com/s/files/1/0079/2539/9616/products/myakka-chairs-jalkamal-block-print-footstool-28730051264703_2000x.jpg?v=1629217511",
         category: 3,
         price: "$ 80.00",
+        description:
+            "Minimal Stand is made of by natural wood. The design that is very simple and minimal. This is truly one of the best furnitures in any family for now. With 3 different colors, you can easily select the best match for your home. ",
     },
     {
         id: 5,
@@ -44,5 +46,7 @@ export const products = [
         ],
         category: 4,
         price: "$ 120.00",
+        description:
+            "Minimal Stand is made of by natural wood. The design that is very simple and minimal. This is truly one of the best furnitures in any family for now. With 3 different colors, you can easily select the best match for your home. ",
     },
 ];
