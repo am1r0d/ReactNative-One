@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./CreateListingStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../../components/Header/Header";
@@ -20,6 +20,10 @@ const CreateListing = ({ navigation }) => {
             />
             <ScrollView style={styles.container}>
                 <Text style={styles.sectionTitle}>Upload Photos</Text>
+
+                <TouchableOpacity>
+                    <Text>+</Text>
+                </TouchableOpacity>
             </ScrollView>
         </SafeAreaView>
     );
