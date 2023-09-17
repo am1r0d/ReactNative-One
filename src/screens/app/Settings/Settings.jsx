@@ -14,7 +14,7 @@ import ListItem from "../../../components/ListItem/ListItem";
 import EditableBox from "../../../components/EditableBox/EditableBox";
 import Button from "../../../components/Button/Button";
 
-const Settings = () => {
+const Settings = ({ navigation }) => {
     //
     const [editing, setEditing] = useState(false);
     const [values, setValues] = useState({
@@ -38,10 +38,14 @@ const Settings = () => {
     const onChange = (key, value) => {
         setValues((v) => ({ ...v, [key]: value }));
     };
+
+    const goBack = () => {
+        navigation.goBack();
+    };
     //
     return (
         <SafeAreaView>
-            <Header title="Settings" showLogout />
+            <Header showBack onBackPress={goBack} title="Settings" />
             <ScrollView style={styles.container}>
                 <View style={styles.sectionHeader}>
                     <Text style={styles.sectionTitle}>

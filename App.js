@@ -17,6 +17,7 @@ import ProductDetails from "./src/screens/app/ProductDetails/ProductDetails";
 import Favorites from "./src/screens/app/Favorites/Favorites";
 import { Image } from "react-native";
 
+import CreateListing from "./src/screens/app/CreateListing/CreateListing";
 // // const WEB_CLIENT_ID =
 // //     "286125874361-mjcgbtn5v0p0iur07s3mvlfe9n4dqad4.apps.googleusercontent.com";
 // // const IOS_CLIENT_ID =
@@ -38,6 +39,11 @@ const ProfileStack = () => {
             <Stack.Screen
                 name="Settings"
                 component={Settings}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="CreateListing"
+                component={CreateListing}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
