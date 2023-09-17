@@ -26,10 +26,10 @@ export const styles = StyleSheet.create({
         color: colors.blue,
         fontSize: 18,
         fontWeight: "bold",
-        marginBottom: 6,
     },
     subtitle: {
         color: colors.grey,
+        marginTop: 6,
         fontSize: 12,
     },
     arrow: {

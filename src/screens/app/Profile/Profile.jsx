@@ -6,7 +6,7 @@ import Header from "../../../components/Header/Header";
 import ListItem from "../../../components/ListItem/ListItem";
 import Button from "../../../components/Button/Button";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
     //
     const onLogout = () => {
         console.log("log out clicked");
@@ -14,6 +14,11 @@ const Profile = () => {
 
     //
     const num = 10;
+
+    //
+    const onSettingsPress = () => {
+        navigation.navigate("Settings");
+    };
 
     //
     return (
@@ -28,6 +33,7 @@ const Profile = () => {
                         subtitle={`You have ${num} listings`}
                     />
                     <ListItem
+                        onPress={onSettingsPress}
                         title="Settings"
                         subtitle="Account, FAQ, Contact"
                     />
