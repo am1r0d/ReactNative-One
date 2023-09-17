@@ -19,4 +19,4 @@ const ListItem = ({ title, subtitle, onPress, style }) => {
     );
 };
 
-export default ListItem;
+export default React.memo(ListItem);
