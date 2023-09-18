@@ -7,10 +7,12 @@ import {
     View,
     Pressable,
     ActivityIndicator,
+    KeyboardAvoidingView,
 } from "react-native";
 import { styles } from "./CreateListingStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../../components/Header/Header";
+import { categories } from "../../../data/categories";
 
 // ImagePicker
 import * as ImagePicker from "expo-image-picker";
@@ -67,59 +69,72 @@ const CreateListing = ({ navigation }) => {
                 title="Create a new listings"
             />
             <ScrollView style={styles.container}>
-                <Text style={styles.sectionTitle}>Upload Photos</Text>
-                <View style={styles.imageRow}>
-                    <TouchableOpacity
-                        disabled={loading}
-                        style={styles.uploadContainer}
-                        onPress={uploadNewImage}
-                    >
-                        <View style={styles.uploadCircle}>
-                            <Text style={styles.uploadPlus}>+</Text>
-                        </View>
-                    </TouchableOpacity>
+                <KeyboardAvoidingView behavior="position">
+                    <Text style={styles.sectionTitle}>Upload Photos</Text>
+                    <View style={styles.imageRow}>
+                        <TouchableOpacity
+                            disabled={loading}
+                            style={styles.uploadContainer}
+                            onPress={uploadNewImage}
+                        >
+                            <View style={styles.uploadCircle}>
+                                <Text style={styles.uploadPlus}>+</Text>
+                            </View>
+                        </TouchableOpacity>
 
-                    {images?.map((image) => (
-                        <View style={styles.imageContent} key={image?.filename}>
-                            <Image
-                                style={styles.image}
-                                source={{ uri: image?.uri }}
-                            />
-                            <Pressable
-                                hitSlop={20}
-                                onPress={() => onDeleteImage(image)}
+                        {images?.map((image) => (
+                            <View
+                                style={styles.imageContent}
+                                key={image?.filename}
                             >
                                 <Image
-                                    style={styles.delete}
-                                    source={require("../../../assets/close.png")}
+                                    style={styles.image}
+                                    source={{ uri: image?.uri }}
                                 />
-                            </Pressable>
-                        </View>
-                    ))}
-                    {loading ? <ActivityIndicator /> : null}
-                </View>
+                                <Pressable
+                                    hitSlop={20}
+                                    onPress={() => onDeleteImage(image)}
+                                >
+                                    <Image
+                                        style={styles.delete}
+                                        source={require("../../../assets/close.png")}
+                                    />
+                                </Pressable>
+                            </View>
+                        ))}
+                        {loading ? <ActivityIndicator /> : null}
+                    </View>
 
-                <Input
-                    placeholder="Listing Title"
-                    label="Title"
-                    value={values.title}
-                    onChangeText={(v) => onChange(v, "title")}
-                />
-                <Input
-                    placeholder="Enter price in USD"
-                    label="Price"
-                    value={values.price}
-                    onChangeText={(v) => onChange(v, "price")}
-                    keyboardType="numeric"
-                />
-                <Input
-                    style={styles.textarea}
-                    placeholder="Tell us more"
-                    label="Description"
-                    value={values.description}
-                    onChangeText={(v) => onChange(v, "description")}
-                    multiline={true}
-                />
+                    <Input
+                        placeholder="Listing Title"
+                        label="Title"
+                        value={values.title}
+                        onChangeText={(v) => onChange(v, "title")}
+                    />
+                    <Input
+                        placeholder="Select the category"
+                        label="Category"
+                        value={values.category}
+                        onChangeText={(v) => onChange(v, "category")}
+                        type="picker"
+                        options={categories}
+                    />
+                    <Input
+                        placeholder="Enter price in USD"
+                        label="Price"
+                        value={values.price}
+                        onChangeText={(v) => onChange(v, "price")}
+                        keyboardType="numeric"
+                    />
+                    <Input
+                        style={styles.textarea}
+                        placeholder="Tell us more"
+                        label="Description"
+                        value={values.description}
+                        onChangeText={(v) => onChange(v, "description")}
+                        multiline
+                    />
+                </KeyboardAvoidingView>
             </ScrollView>
         </SafeAreaView>
     );
