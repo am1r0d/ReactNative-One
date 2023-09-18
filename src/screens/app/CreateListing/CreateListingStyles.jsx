@@ -15,8 +15,6 @@ export const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 8,
-        marginTop: 8,
-        marginRight: 16,
     },
     uploadContainer: {
         width: 100,
@@ -50,4 +48,6 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         flexWrap: "wrap",
     },
+    delete: { width: 24, height: 24, marginLeft: -16, marginTop: -10 },
+    imageContent: { flexDirection: "row", marginTop: 8, marginRight: 16 },
 });

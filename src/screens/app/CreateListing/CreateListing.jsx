@@ -1,32 +1,54 @@
 import React, { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, Image, View } from "react-native";
+import {
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    Image,
+    View,
+    Pressable,
+    ActivityIndicator,
+} from "react-native";
 import { styles } from "./CreateListingStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../../components/Header/Header";
-import { launchImageLibrary } from "react-native-image-picker";
+
 // ImagePicker
 import * as ImagePicker from "expo-image-picker";
 
 const CreateListing = ({ navigation }) => {
     const [images, setImages] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     const goBack = () => {
         navigation.goBack();
     };
 
     // Upload image
     const uploadNewImage = async () => {
+        setLoading(true);
         const result = await ImagePicker.launchImageLibraryAsync({
             allowsEditing: true,
             quality: 1,
         });
         if (result?.assets?.length) {
             setImages((list) => [...list, ...result?.assets]);
+            setLoading(false);
         }
         if (!result.canceled) {
             console.log(result);
         } else {
             alert("you did not select any image");
         }
+    };
+
+    //
+    const onDeleteImage = (image) => {
+        setImages((list) => {
+            const filteredImages = list.filter(
+                (img) => img?.fileName !== image?.fileName
+            );
+            return filteredImages;
+        });
     };
 
     //
@@ -41,6 +63,7 @@ const CreateListing = ({ navigation }) => {
                 <Text style={styles.sectionTitle}>Upload Photos</Text>
                 <View style={styles.imageRow}>
                     <TouchableOpacity
+                        disabled={loading}
                         style={styles.uploadContainer}
                         onPress={uploadNewImage}
                     >
@@ -50,12 +73,24 @@ const CreateListing = ({ navigation }) => {
                     </TouchableOpacity>
 
                     {images?.map((image) => (
-                        <Image
-                            key={image?.filename}
-                            style={styles.image}
-                            source={{ uri: image?.uri }}
-                        />
+                        <View style={styles.imageContent} key={image?.filename}>
+                            <Image
+                                style={styles.image}
+                                source={{ uri: image?.uri }}
+                            />
+                            <Pressable
+                                hitSlop={20}
+                                onPress={() => onDeleteImage(image)}
+                            >
+                                <Image
+                                    style={styles.delete}
+                                    source={require("../../../assets/close.png")}
+                                />
+                            </Pressable>
+                        </View>
                     ))}
+
+                    {loading ? <ActivityIndicator /> : null}
                 </View>
             </ScrollView>
         </SafeAreaView>
