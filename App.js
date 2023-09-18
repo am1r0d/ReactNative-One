@@ -101,7 +101,7 @@ export default function App() {
     };
 
     // isSignedIn
-    const isSignedIn = true;
+    const isSignedIn = false;
 
     return (
         <SafeAreaProvider>
