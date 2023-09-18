@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -28,6 +28,9 @@ import MyListing from "./src/screens/app/MyListing/MyListing";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+// context
+export const UserContext = React.createContext();
 
 const ProfileStack = () => {
     return (
@@ -92,6 +95,9 @@ const Tabs = () => (
 );
 
 export default function App() {
+    // isSignedIn
+    const isSignedIn = false;
+
     //
     // Theme Navigation
     const theme = {
@@ -100,47 +106,48 @@ export default function App() {
         },
     };
 
-    // isSignedIn
-    const isSignedIn = false;
+    const [user, setUser] = useState();
 
     return (
         <SafeAreaProvider>
-            <NavigationContainer theme={theme}>
-                <Stack.Navigator>
-                    {isSignedIn ? (
-                        <>
-                            <Stack.Screen
-                                name="Tabs"
-                                component={Tabs}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen
-                                name="ProductDetails"
-                                component={ProductDetails}
-                                options={{ headerShown: false }}
-                            />
-                        </>
-                    ) : (
-                        <>
-                            <Stack.Screen
-                                name="Splash"
-                                component={Splash}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen
-                                name="Signin"
-                                component={Signin}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen
-                                name="Signup"
-                                component={Signup}
-                                options={{ headerShown: false }}
-                            />
-                        </>
-                    )}
-                </Stack.Navigator>
-            </NavigationContainer>
+            <UserContext.Provider value={{ user, setUser }}>
+                <NavigationContainer theme={theme}>
+                    <Stack.Navigator>
+                        {isSignedIn ? (
+                            <>
+                                <Stack.Screen
+                                    name="Tabs"
+                                    component={Tabs}
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="ProductDetails"
+                                    component={ProductDetails}
+                                    options={{ headerShown: false }}
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <Stack.Screen
+                                    name="Splash"
+                                    component={Splash}
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="Signin"
+                                    component={Signin}
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="Signup"
+                                    component={Signup}
+                                    options={{ headerShown: false }}
+                                />
+                            </>
+                        )}
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </UserContext.Provider>
         </SafeAreaProvider>
     );
 }
