@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Image } from "react-native";
 
 import Signin from "./src/screens/auth/Signin/Signin";
 import Splash from "./src/screens/auth/Splash/Splash";
@@ -15,9 +16,9 @@ import Profile from "./src/screens/app/Profile/Profile";
 import Settings from "./src/screens/app/Settings/Settings";
 import ProductDetails from "./src/screens/app/ProductDetails/ProductDetails";
 import Favorites from "./src/screens/app/Favorites/Favorites";
-import { Image } from "react-native";
-
 import CreateListing from "./src/screens/app/CreateListing/CreateListing";
+import MyListing from "./src/screens/app/MyListing/MyListing";
+
 // // const WEB_CLIENT_ID =
 // //     "286125874361-mjcgbtn5v0p0iur07s3mvlfe9n4dqad4.apps.googleusercontent.com";
 // // const IOS_CLIENT_ID =
@@ -44,6 +45,11 @@ const ProfileStack = () => {
             <Stack.Screen
                 name="CreateListing"
                 component={CreateListing}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="MyListing"
+                component={MyListing}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>

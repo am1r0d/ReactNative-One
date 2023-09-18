@@ -13,6 +13,7 @@ import { styles } from "./CreateListingStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../../components/Header/Header";
 import { categories } from "../../../data/categories";
+import Button from "../../../components/Button/Button";
 
 // ImagePicker
 import * as ImagePicker from "expo-image-picker";
@@ -22,6 +23,8 @@ const CreateListing = ({ navigation }) => {
     const [images, setImages] = useState([]);
     const [values, setValues] = useState({});
     const [loading, setLoading] = useState(false);
+
+    console.log("VALUESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", values);
 
     const goBack = () => {
         navigation.goBack();
@@ -135,6 +138,7 @@ const CreateListing = ({ navigation }) => {
                         multiline
                     />
                 </KeyboardAvoidingView>
+                <Button title="Submit" style={styles.button} />
             </ScrollView>
         </SafeAreaView>
     );

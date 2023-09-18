@@ -5,18 +5,26 @@ import { products } from "../../../data/products";
 import FavoriteItem from "../../../components/FavoriteItem/FavoriteItem";
 import Header from "../../../components/Header/Header";
 
-const Favorites = ({ navigation }) => {
+const MyListing = ({ navigation }) => {
     // renderItem
     const renderItem = ({ item }) => {
         const onProductPress = () => {
             navigation.navigate("ProductDetails", { product: item });
         };
-        return <FavoriteItem onPress={onProductPress} {...item} />;
+        return (
+            <FavoriteItem
+                icon={require("../../../assets/delete.png")}
+                onPress={onProductPress}
+                {...item}
+            />
+        );
     };
+
+    const goBack = () => navigation.goBack();
 
     return (
         <SafeAreaView>
-            <Header title="Favorites" />
+            <Header title="Favorites" showBack onBackPress={goBack} />
             <FlatList
                 data={products}
                 renderItem={renderItem}
@@ -26,4 +34,4 @@ const Favorites = ({ navigation }) => {
     );
 };
 
-export default React.memo(Favorites);
+export default React.memo(MyListing);

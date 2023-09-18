@@ -26,6 +26,11 @@ const Profile = ({ navigation }) => {
     };
 
     //
+    const onMyListingPress = () => {
+        navigation.navigate("MyListing");
+    };
+
+    //
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Header title="Profile" showLogout onLogout={onLogout} />
@@ -34,6 +39,7 @@ const Profile = ({ navigation }) => {
                     <Text style={styles.name}>User name</Text>
                     <Text style={styles.email}>User email</Text>
                     <ListItem
+                        onPress={onMyListingPress}
                         title="My Listings"
                         subtitle={`You have ${num} listings`}
                     />
