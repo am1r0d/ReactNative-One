@@ -14,9 +14,11 @@ import Header from "../../../components/Header/Header";
 
 // ImagePicker
 import * as ImagePicker from "expo-image-picker";
+import Input from "../../../components/Input/Input";
 
 const CreateListing = ({ navigation }) => {
     const [images, setImages] = useState([]);
+    const [values, setValues] = useState({});
     const [loading, setLoading] = useState(false);
 
     const goBack = () => {
@@ -49,6 +51,11 @@ const CreateListing = ({ navigation }) => {
             );
             return filteredImages;
         });
+    };
+
+    //
+    const onChange = (value, key) => {
+        setValues((val) => [{ ...val, [key]: value }]);
     };
 
     //
@@ -89,9 +96,30 @@ const CreateListing = ({ navigation }) => {
                             </Pressable>
                         </View>
                     ))}
-
                     {loading ? <ActivityIndicator /> : null}
                 </View>
+
+                <Input
+                    placeholder="Listing Title"
+                    label="Title"
+                    value={values.title}
+                    onChangeText={(v) => onChange(v, "title")}
+                />
+                <Input
+                    placeholder="Enter price in USD"
+                    label="Price"
+                    value={values.price}
+                    onChangeText={(v) => onChange(v, "price")}
+                    keyboardType="numeric"
+                />
+                <Input
+                    style={styles.textarea}
+                    placeholder="Tell us more"
+                    label="Description"
+                    value={values.description}
+                    onChangeText={(v) => onChange(v, "description")}
+                    multiline={true}
+                />
             </ScrollView>
         </SafeAreaView>
     );

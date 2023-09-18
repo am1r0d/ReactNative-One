@@ -50,4 +50,8 @@ export const styles = StyleSheet.create({
     },
     delete: { width: 24, height: 24, marginLeft: -16, marginTop: -10 },
     imageContent: { flexDirection: "row", marginTop: 8, marginRight: 16 },
+    textarea: {
+        minHeight: 150,
+        paddingTop: 16,
+    },
 });
